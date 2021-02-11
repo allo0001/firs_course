@@ -6,19 +6,35 @@
 # Вывести цены пяти самых дорогих товаров. Сможете ли вывести цены этих товаров по возрастанию, написав минимум кода?
 
 
-prices = [57.8, 46.51, 97, 48.56, 86.84,
+prices = [57.8, 46.01, 97, 8.56, 86.84,
           75.66, 35, 65, 45.35, 46.3,
           78.5, 53.6, 58, 48, 99.99,
           57, 82.6, 66.3, 44.1, 22.2]
 #A
+print("*******A*******")
+rez = []
 
+for price in prices:
+    if price % 1 == 0:
+        rez.append(f'{price} руб 00 коп')
+    else:
+        r = int(price)
+        k = round((price % 1) * 100) 
+        if k < 10:
+            k = f'0{k}'
+        rez.append(f'{r} руб {k} коп')
+        
+print (', '.join(rez))
 #B
+print("*******B*******")
 print(sorted(prices))
 print(prices)
 
 #C
+print("*******C*******")
 pricesSort = sorted(prices,reverse=True)
 print(pricesSort)
 
 #D
+print("*******D*******")
 print(pricesSort[:5])
