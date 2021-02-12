@@ -6,5 +6,5 @@ workers = ['инженер-конструктор Игорь',
            ]
 
 for worker in workers:
-    name = worker.split(' ')[-1].title()
+    name = worker.split()[-1].title()  
     print(f'Привет, {name}!')
