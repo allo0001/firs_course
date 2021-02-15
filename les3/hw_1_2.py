@@ -8,10 +8,10 @@ def num_translate(word):
 
 def num_translate_adv(word):
     translate = num_translate(word)
-    if word[0].isupper() and translate != None:
+    if word[0].isupper() and translate is not None:
         return translate.capitalize()
     else:
         return translate
     
     
-print(num_translate_adv('Ldf'))
+print(num_translate_adv('Три'))
