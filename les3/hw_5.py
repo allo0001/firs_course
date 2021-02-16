@@ -1,4 +1,4 @@
-from random import shuffle, randint
+from random import shuffle, randint, choice
 
 nouns = ["автомобиль", "лес", "огонь", "город", "дом"]
 adverbs = ["сегодня", "вчера", "завтра", "позавчера", "ночью"]
@@ -18,8 +18,8 @@ def get_jokes(count, repeat=False):
             rez.append(' '.join(jokes[i]))
     else:
         for i in range(count):
-            rez.append(f'{nouns[randint(0,len(nouns)-1)]} {adverbs[randint(0,len(adverbs)-1)]} {adjectives[randint(0,len(adjectives)-1)]}')
+            rez.append(f'{choice(nouns)} {choice(adverbs)} {choice(adjectives)}')
     return rez
 
 
-print(get_jokes(1000, repeat=True))
+print(get_jokes(1000, repeat=False))
