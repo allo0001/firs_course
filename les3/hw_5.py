@@ -1,6 +1,4 @@
-# вариант без удаления из списка = варианту с удалением, переписать вариант без удаления
-# процедура возврашает список кортежей, а должна список строк. join ++++++
-from random import shuffle
+from random import shuffle, randint
 
 nouns = ["автомобиль", "лес", "огонь", "город", "дом"]
 adverbs = ["сегодня", "вчера", "завтра", "позавчера", "ночью"]
@@ -8,19 +6,20 @@ adjectives = ["веселый", "яркий", "зеленый", "утопичн�
 
 
 def get_jokes(count, repeat=False):
-    shuffle(nouns)
-    shuffle(adverbs)
-    shuffle(adjectives)
-    jokes = list(zip(nouns, adverbs, adjectives))
     rez = []
-    if count > len(jokes):
-        count = len(jokes)
-    for i in range(count):
-        if repeat:
+    if repeat:
+        shuffle(nouns)
+        shuffle(adverbs)
+        shuffle(adjectives)
+        jokes = list(zip(nouns, adverbs, adjectives))
+        if count > len(jokes):
+            count = len(jokes)
+        for i in range(count):
             rez.append(' '.join(jokes[i]))
-        else:
-            rez.append(' '.join(jokes.pop()))
+    else:
+        for i in range(count):
+            rez.append(f'{nouns[randint(0,len(nouns)-1)]} {adverbs[randint(0,len(adverbs)-1)]} {adjectives[randint(0,len(adjectives)-1)]}')
     return rez
 
 
-print(get_jokes(10, repeat=True))
+print(get_jokes(1000, repeat=True))
