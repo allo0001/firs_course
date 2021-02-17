@@ -13,7 +13,7 @@ def parse_response_str():
     split_res.pop(-1)
     rez = {}
     date_res = split_res[0][split_res[0].find('Date')+6: split_res[0].find('Date')+16].split('.')
-    date_res = list(map(int,date_res))
+    date_res = list(map(int, date_res))
     rez['Date'] = date(date_res[2], date_res[1], date_res[0])
     for valute in split_res:
         char_code = valute[valute.find('<CharCode>')+10: valute.find('<CharCode>')+13]
@@ -27,7 +27,7 @@ def parse_response_xml():
     rez = {}
     root_node = ET.ElementTree(ET.fromstring(response)).getroot()
     date_res = root_node.get('Date').split('.')
-    date_res = list(map(int,date_res))
+    date_res = list(map(int, date_res))
     rez['Date'] = date(date_res[2], date_res[1], date_res[0])
     for elem in root_node.findall('Valute'):
         char_code = elem.find('CharCode').text
@@ -40,7 +40,6 @@ def parse_response_xml():
 def currency_rates(char_code, function=parse_response_xml):
     char_code = char_code.upper()
     res = function()
-    #разобраться с кортажем из прошлой функции
     valute = res.get(char_code)
     date_res = res.get('Date')
     if valute:
