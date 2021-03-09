@@ -29,11 +29,11 @@ with open(CONFIG, 'r') as f:
 
 mp_path = os.path.join(PATH,'my_project')
 create_folder(os.path.join(mp_path, 'templates'))
-for i in os.walk(mp_path):
-    if i[2]:
-        folder_name = os.path.split(i[0])[1]
-        if os.path.split(i[0])[0] != os.path.join(mp_path, 'templates'):
-            for file in i[2]:
+for root, dirs, files in os.walk(mp_path):
+    if files:
+        folder_name = os.path.split(root)[1]
+        if os.path.split(root)[0] != os.path.join(mp_path, 'templates'):
+            for file in files:
                 if file.endswith('.html'):
-                    create_folder(os.path.join(mp_path,'templates',folder_name))
-                    copyfile(os.path.join(i[0],file), os.path.join(mp_path,'templates',folder_name,file))
+                    create_folder(os.path.join(mp_path, 'templates', folder_name))
+                    copyfile(os.path.join(root, file), os.path.join(mp_path, 'templates',folder_name, file))
