@@ -5,9 +5,11 @@ def type_logger(func):
 
     @wraps(func)
     def wraper(*args, **kvargs):
-        types = ({a: type(a) for a in args})
+        types = {a: type(a) for a in args}
+
         if kvargs:
-            print(f'{func.__name__} args: {types}, kvargs: {kvargs}')
+            k_type = {k: {v: type(v)} for k, v in kvargs.items()}
+            print(f'{func.__name__} args: {types}, kvargs: {k_type}')
         else:
             print(f'{func.__name__ } {types}')
         res = func(*args, **kvargs)
@@ -17,7 +19,7 @@ def type_logger(func):
 
 
 @type_logger
-def calc_cube(x, y='15'):
+def calc_cube(x, **kvargs):
    return x ** 3
 
 
