@@ -8,7 +8,7 @@ b = int(input('Введите b:'))
 
 try:
     if b == 0:
-        raise ZeroDivision('\nДеление на 0')
+        raise ZeroDivision('\nДеление на ноль недопустимо')
     print(f'a / b = {a/ b}')
 
 except ZeroDivision as err:
