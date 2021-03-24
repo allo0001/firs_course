@@ -3,8 +3,8 @@ class ZeroDivision(Exception):
         self.text = text
         
         
-a = int(input('Ввежите a:'))
-b = int(input('Ввежите b:'))
+a = int(input('Введите a:'))
+b = int(input('Введите b:'))
 
 try:
     if b == 0:
