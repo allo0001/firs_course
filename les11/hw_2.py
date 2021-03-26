@@ -13,4 +13,3 @@ try:
 
 except ZeroDivision as err:
     print(err)
-    
